@@ -16,17 +16,12 @@ export default function Logo({ className = '', height = 64 }: LogoProps) {
       role="img"
       aria-label="Bohdan.dev"
       className={className}
-      style={{
-        width,
-        height,
-        overflow: 'hidden',
-        position: 'relative',
-        flexShrink: 0,
-        borderRadius: height / 2,
-        border: '1px solid rgba(57,255,106,0.25)',
-        backgroundColor: 'rgba(255,255,255,0.06)',
-        boxShadow: '0 0 10px rgba(57,255,106,0.18)',
-      }}
+       style={{
+         width,
+         height,
+         position: 'relative',
+         flexShrink: 0,
+       }}
     >
       <img
         src={logoSrc}
