@@ -4,7 +4,7 @@ import { Providers } from './providers';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://hembatiuk.dev'),
-  title: 'Bohdan Hembatiuk Portfolio',
+  title: 'Bohdan Hembatiuk',
   description: 'Bohdan Hembatiuk — Full Stack Developer. C# / .NET, React, Next.js, TypeScript.',
   icons: {
     icon: '/favicon.jpg',

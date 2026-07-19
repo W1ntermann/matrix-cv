@@ -229,7 +229,7 @@ export default function Home() {
                 <FaGithub className="text-2xl" />
               </a>
               <a
-                href="https://t.me/badan_badanowyc"
+                href="https://t.me/badan_badanowycz"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-500 hover:text-primary transition-all hover:scale-110 hover:drop-shadow-[0_0_8px_#39ff6a]"
