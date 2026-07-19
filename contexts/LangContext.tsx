@@ -136,7 +136,7 @@ const translations = {
       send: '[ Надіслати Повідомлення ]',
       emailLabel: 'bogdangembatyuk@gmail.com',
       githubLabel: 'github.com/W1ntermann',
-      telegramLabel: 't.me/badan_badanowyc',
+      telegramLabel: 't.me/badan_badanowycz',
       instagramLabel: 'instagram.com/bohdan_codes',
     },
     footer: {
