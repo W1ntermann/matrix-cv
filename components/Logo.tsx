@@ -1,6 +1,6 @@
 'use client';
 
-const logoSrc = '/logo.png';
+const logoSrc = '/second-logo.jpg';
 
 interface LogoProps { className?: string; height?: number }
 
