@@ -4,7 +4,7 @@ import { motion, useInView } from 'framer-motion';
 import { useEffect, useState, useRef, useCallback } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import {
-  FaReact, FaGithub, FaLinkedin, FaTwitter, FaEnvelope,
+  FaReact, FaGithub, FaTelegramPlane, FaInstagram, FaEnvelope,
 } from 'react-icons/fa';
 import {
   SiDotnet, SiTypescript, SiMongodb, SiPostgresql, SiTailwindcss, SiNextdotjs,
@@ -219,15 +219,33 @@ export default function Home() {
             </div>
 
             <div className="flex gap-6 mt-6">
-              {([FaGithub, FaLinkedin, FaTwitter] as const).map((Icon, i) => (
-                <a
-                  key={i}
-                  href="#"
-                  className="text-gray-500 hover:text-primary transition-all hover:scale-110 hover:drop-shadow-[0_0_8px_#39ff6a]"
-                >
-                  <Icon className="text-2xl" />
-                </a>
-              ))}
+              <a
+                href="https://github.com/W1ntermann"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-500 hover:text-primary transition-all hover:scale-110 hover:drop-shadow-[0_0_8px_#39ff6a]"
+                aria-label="GitHub"
+              >
+                <FaGithub className="text-2xl" />
+              </a>
+              <a
+                href="https://t.me/badan_badanowyc"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-500 hover:text-primary transition-all hover:scale-110 hover:drop-shadow-[0_0_8px_#39ff6a]"
+                aria-label="Telegram"
+              >
+                <FaTelegramPlane className="text-2xl" />
+              </a>
+              <a
+                href="https://instagram.com/bohdan_codes"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-500 hover:text-primary transition-all hover:scale-110 hover:drop-shadow-[0_0_8px_#39ff6a]"
+                aria-label="Instagram"
+              >
+                <FaInstagram className="text-2xl" />
+              </a>
             </div>
           </motion.div>
 
@@ -548,20 +566,38 @@ export default function Home() {
               <p className="text-gray-300 leading-relaxed">{t.contact.intro}</p>
 
               <div className="flex flex-col gap-6">
-                {([
-                  [FaEnvelope, t.contact.emailLabel, 'mailto:bohdan@dev.io'],
-                  [FaGithub, t.contact.githubLabel, '#'],
-                  [FaLinkedin, t.contact.linkedinLabel, '#'],
-                ] as const).map(([Icon, label, href], i) => (
-                  <a key={i} href={href} className="flex items-center gap-4 group">
-                    <div className="p-3 border border-primary/30 group-hover:border-primary group-hover:bg-primary/10 transition-colors">
-                      <Icon className="text-primary text-xl" />
-                    </div>
-                    <span className="text-gray-300 group-hover:text-primary transition-colors font-mono text-sm">
-                      {label}
-                    </span>
-                  </a>
-                ))}
+                <a href="mailto:bogdangembatyuk@gmail.com" className="flex items-center gap-4 group">
+                  <div className="p-3 border border-primary/30 group-hover:border-primary group-hover:bg-primary/10 transition-colors">
+                    <FaEnvelope className="text-primary text-xl" />
+                  </div>
+                  <span className="text-gray-300 group-hover:text-primary transition-colors font-mono text-sm">
+                    {t.contact.emailLabel}
+                  </span>
+                </a>
+                <a href="https://github.com/W1ntermann" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
+                  <div className="p-3 border border-primary/30 group-hover:border-primary group-hover:bg-primary/10 transition-colors">
+                    <FaGithub className="text-primary text-xl" />
+                  </div>
+                  <span className="text-gray-300 group-hover:text-primary transition-colors font-mono text-sm">
+                    {t.contact.githubLabel}
+                  </span>
+                </a>
+                <a href="https://t.me/badan_badanowycz" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
+                  <div className="p-3 border border-primary/30 group-hover:border-primary group-hover:bg-primary/10 transition-colors">
+                    <FaTelegramPlane className="text-primary text-xl" />
+                  </div>
+                  <span className="text-gray-300 group-hover:text-primary transition-colors font-mono text-sm">
+                    {t.contact.telegramLabel}
+                  </span>
+                </a>
+                <a href="https://instagram.com/bohdan_codes" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
+                  <div className="p-3 border border-primary/30 group-hover:border-primary group-hover:bg-primary/10 transition-colors">
+                    <FaInstagram className="text-primary text-xl" />
+                  </div>
+                  <span className="text-gray-300 group-hover:text-primary transition-colors font-mono text-sm">
+                    {t.contact.instagramLabel}
+                  </span>
+                </a>
               </div>
             </motion.div>
 
@@ -621,6 +657,42 @@ export default function Home() {
       {/* ── FOOTER ───────────────────────────────────────────── */}
       <footer className="border-t border-primary/20 py-8 mt-10">
         <div className="max-w-7xl mx-auto px-6 text-center">
+          <div className="flex justify-center gap-5 mb-6">
+            <a
+              href="https://github.com/W1ntermann"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-500 hover:text-primary transition-all hover:scale-110"
+              aria-label="GitHub"
+            >
+              <FaGithub className="text-lg" />
+            </a>
+            <a
+              href="https://t.me/badan_badanowycz"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-500 hover:text-primary transition-all hover:scale-110"
+              aria-label="Telegram"
+            >
+              <FaTelegramPlane className="text-lg" />
+            </a>
+            <a
+              href="https://instagram.com/bohdan_codes"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-500 hover:text-primary transition-all hover:scale-110"
+              aria-label="Instagram"
+            >
+              <FaInstagram className="text-lg" />
+            </a>
+            <a
+              href="mailto:bogdangembatyuk@gmail.com"
+              className="text-gray-500 hover:text-primary transition-all hover:scale-110"
+              aria-label="Email"
+            >
+              <FaEnvelope className="text-lg" />
+            </a>
+          </div>
           <p className="text-gray-600 text-xs font-mono">{t.footer.copy}</p>
           <p className="text-gray-700 text-[10px] mt-2 font-mono">{t.footer.shutdown}</p>
         </div>
