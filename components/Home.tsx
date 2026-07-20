@@ -71,10 +71,10 @@ const SkillBar = ({ icon: Icon, name, progress, delay }: {
 
 /* ── Project Card ───────────────────────────────────────── */
 const ProjectCard = ({
-  title, desc, tags, view, github, index: i,
+  title, desc, tags, view, github, index: i, image, caption,
 }: {
   title: string; desc: string; tags: readonly string[];
-  view: string; github: string; index: number;
+  view: string; github: string; index: number; image?: string; caption?: string;
 }) => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-60px' });
@@ -96,27 +96,62 @@ const ProjectCard = ({
       }}
     >
       {/* Thumbnail */}
-      <div className="h-40 border-b border-primary/20 bg-[#050705] relative overflow-hidden flex items-center justify-center p-4">
-        <div className="absolute inset-0 opacity-10 bg-[linear-gradient(rgba(57,255,106,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(57,255,106,0.1)_1px,transparent_1px)] bg-[size:10px_10px]" />
+      <div className="h-40 border-b border-primary/20 bg-[#050705] relative overflow-hidden flex items-center justify-center">
+        {/* Matrix grid overlay */}
+        <div className="absolute inset-0 z-10 opacity-10 bg-[linear-gradient(rgba(57,255,106,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(57,255,106,0.1)_1px,transparent_1px)] bg-[size:10px_10px] pointer-events-none" />
+        {/* Scanline overlay */}
+        <div
+          className="absolute inset-0 z-10 pointer-events-none"
+          style={{
+            background: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.08) 2px, rgba(0,0,0,0.08) 4px)',
+          }}
+        />
         {/* Animated scan line on hover */}
         {hovered && (
           <motion.div
-            className="absolute left-0 right-0 h-px bg-primary/50"
+            className="absolute left-0 right-0 h-px bg-primary/50 z-20"
             initial={{ top: 0 }}
             animate={{ top: '100%' }}
             transition={{ duration: 1.2, repeat: Infinity, ease: 'linear' }}
           />
         )}
-        <span className="text-gray-600 font-mono text-xs z-10 text-center leading-relaxed">
-          {'<'} {title.toLowerCase()} {'/>'}
-          <br /><br />
-          01001011 01100101 01111001
-        </span>
+        {/* Project image */}
+        {image ? (
+          <img
+            src={image}
+            alt={title}
+            className="w-full h-full object-cover object-top"
+            style={{ filter: 'contrast(1.05) brightness(0.85) saturate(0.9)' }}
+          />
+        ) : (
+          <span className="text-gray-600 font-mono text-xs z-0 text-center leading-relaxed p-4">
+            {'<'} {title.toLowerCase()} {'/>'}
+            <br /><br />
+            01001011 01100101 01111001
+          </span>
+        )}
         {/* Number label */}
-        <span className="absolute top-2 right-3 text-primary/30 text-xs font-mono">
+        <span className="absolute top-2 right-3 text-primary/30 text-xs font-mono z-20">
           {String(i + 1).padStart(2, '0')}
         </span>
+        {/* Title badge on hover */}
+        {hovered && (
+          <motion.div
+            className="absolute bottom-0 left-0 right-0 bg-[#050705]/80 backdrop-blur-sm border-t border-primary/30 px-3 py-1.5 z-20"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.2 }}
+          >
+            <span className="text-primary text-xs font-mono tracking-wider">{'<'} {title} {'/>'}</span>
+          </motion.div>
+        )}
       </div>
+
+      {caption && (
+        <div className="px-4 pt-3">
+          <span className="text-primary text-sm font-mono">{caption}</span>
+        </div>
+      )}
 
       <div className="p-6 flex-grow flex flex-col">
         <h3 className="text-white font-bold text-xl mb-3 group-hover:text-primary transition-colors tracking-wide">
