@@ -71,10 +71,10 @@ const SkillBar = ({ icon: Icon, name, progress, delay }: {
 
 /* ── Project Card ───────────────────────────────────────── */
 const ProjectCard = ({
-  title, desc, tags, view, github, index: i, image, caption,
+  title, desc, tags, view, github, viewUrl, githubUrl, index: i, image, caption,
 }: {
   title: string; desc: string; tags: readonly string[];
-  view: string; github: string; index: number; image?: string; caption?: string;
+  view: string; github: string; viewUrl?: string; githubUrl?: string; index: number; image?: string; caption?: string;
 }) => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-60px' });
@@ -96,7 +96,7 @@ const ProjectCard = ({
       }}
     >
       {/* Thumbnail */}
-      <div className="h-40 border-b border-primary/20 bg-[#050705] relative overflow-hidden flex items-center justify-center">
+      <div className="h-32 border-b border-primary/20 bg-[#050705] relative overflow-hidden flex items-center justify-center">
         {/* Matrix grid overlay */}
         <div className="absolute inset-0 z-10 opacity-10 bg-[linear-gradient(rgba(57,255,106,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(57,255,106,0.1)_1px,transparent_1px)] bg-[size:10px_10px] pointer-events-none" />
         {/* Scanline overlay */}
@@ -137,7 +137,7 @@ const ProjectCard = ({
         {/* Title badge on hover */}
         {hovered && (
           <motion.div
-            className="absolute bottom-0 left-0 right-0 bg-[#050705]/80 backdrop-blur-sm border-t border-primary/30 px-3 py-1.5 z-20"
+              className="absolute bottom-0 left-0 right-0 bg-[#050705]/80 backdrop-blur-sm border-t border-primary/30 px-2 py-1 z-20"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.2 }}
@@ -148,18 +148,18 @@ const ProjectCard = ({
       </div>
 
       {caption && (
-        <div className="px-4 pt-3">
-          <span className="text-primary text-sm font-mono">{caption}</span>
+        <div className="px-3 pt-1.5">
+          <span className="text-primary text-xs font-mono">{caption}</span>
         </div>
       )}
 
-      <div className="p-6 flex-grow flex flex-col">
-        <h3 className="text-white font-bold text-xl mb-3 group-hover:text-primary transition-colors tracking-wide">
+      <div className="p-4 flex-grow flex flex-col">
+        <h3 className="text-white font-bold text-lg mb-2 group-hover:text-primary transition-colors tracking-wide">
           {title}
         </h3>
-        <p className="text-gray-400 text-sm mb-6 flex-grow leading-relaxed">{desc}</p>
+        <p className="text-gray-400 text-xs mb-4 flex-grow leading-snug">{desc}</p>
 
-        <div className="flex flex-wrap gap-2 mb-6">
+        <div className="flex flex-wrap gap-1.5 mb-4">
           {tags.map(tag => (
             <span
               key={tag}
@@ -171,12 +171,22 @@ const ProjectCard = ({
         </div>
 
         <div className="flex gap-3 mt-auto">
-          <button className="text-xs text-white border border-gray-600 hover:border-primary hover:text-primary px-3 py-1.5 transition-colors font-mono">
+          <a
+            href={viewUrl ?? '#'}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs text-white border border-gray-600 hover:border-primary hover:text-primary px-2.5 py-1 transition-colors font-mono"
+          >
             {view}
-          </button>
-          <button className="text-xs text-white border border-gray-600 hover:border-primary hover:text-primary px-3 py-1.5 transition-colors font-mono flex items-center gap-1.5">
-            <FaGithub className="text-sm" />{github}
-          </button>
+          </a>
+          <a
+            href={githubUrl ?? '#'}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs text-white border border-gray-600 hover:border-primary hover:text-primary px-2.5 py-1 transition-colors font-mono flex items-center gap-1"
+          >
+            <FaGithub className="text-xs" />{github}
+          </a>
         </div>
       </div>
     </motion.div>
